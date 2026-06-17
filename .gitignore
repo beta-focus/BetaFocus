@@ -4,6 +4,7 @@
 openspec/
 propose1/
 propose2/
+deprecated/
 
 # Source content (not needed for deployment)
 content.md

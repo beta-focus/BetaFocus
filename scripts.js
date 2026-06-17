@@ -87,6 +87,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const hamburger = document.querySelector(".hamburger");
+  const headerNav = document.querySelector(".header-nav");
+
+  if (hamburger && headerNav) {
+    hamburger.addEventListener("click", () => {
+      const isActive = headerNav.classList.toggle("active");
+      hamburger.classList.toggle("active");
+      hamburger.setAttribute("aria-expanded", isActive);
+      document.body.style.overflow = isActive ? "hidden" : "";
+    });
+
+    headerNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        headerNav.classList.remove("active");
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+
   const faqItems = document.querySelectorAll(".faq-item");
   faqItems.forEach((item) => {
     const question = item.querySelector(".faq-question");

@@ -39,6 +39,20 @@ document.addEventListener("DOMContentLoaded", () => {
       ease: "power2.out"
     });
 
+    const nutTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#nutricion",
+        start: "top 75%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    nutTL.from("#nutricion .section-header", { y: 30, opacity: 0, duration: 0.6, ease: "power3.out" })
+      .from(".serving-card", { y: 20, opacity: 0, duration: 0.5, stagger: 0.08, ease: "back.out(1.4)" }, "-=0.2")
+      .from(".nutrition-table-wrapper", { y: 30, opacity: 0, scale: 0.98, duration: 0.7, ease: "power2.out" }, "-=0.2")
+      .from(".nutrition-footnote", { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" }, "-=0.3")
+      .from(".ingredients-list", { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" }, "-=0.2");
+
     gsap.from(".use-step", {
       scrollTrigger: {
         trigger: "#uso",

@@ -67,6 +67,20 @@ a {
   position: relative;
 }
 
+.section-dark {
+  background-color: var(--bg-dark);
+}
+
+.section-card {
+  background-color: var(--bg-card);
+  border-top: 1px solid rgba(211, 47, 47, 0.06);
+}
+
+.section-gradient-card {
+  background: radial-gradient(circle at 50% 50%, #161616 0%, #141414 100%);
+  border-top: 1px solid rgba(211, 47, 47, 0.06);
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 60px;
@@ -394,7 +408,7 @@ header {
 }
 
 .ingredients {
-  background-color: var(--bg-card);
+  background-color: var(--bg-dark);
 }
 
 .ingredients-grid {
@@ -454,6 +468,307 @@ header {
   color: var(--text-muted);
   line-height: 1.6;
 }
+
+/* ===== NUTRITION TABLE ===== */
+
+.nutrition {
+  background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-dark) 100%);
+  border-top: 1px solid rgba(211, 47, 47, 0.06);
+  position: relative;
+}
+
+.serving-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 650px;
+  margin: 0 auto 40px;
+}
+
+.serving-info .serving-card {
+  background: var(--bg-dark);
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.serving-info .serving-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.serving-info .serving-card:hover {
+  border-color: rgba(211, 47, 47, 0.3);
+  transform: translateY(-2px);
+}
+
+.serving-info .serving-card:hover::before {
+  transform: scaleX(1);
+}
+
+.serving-info .serving-label {
+  display: block;
+  font-size: 11px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.serving-info .serving-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-family: var(--font-heading);
+}
+
+.serving-info .serving-sub {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.nutrition-table-wrapper {
+  overflow-x: auto;
+  margin: 0 auto 20px;
+  border-radius: 14px;
+}
+
+.nutrition-table {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  color: var(--text-main);
+  background: var(--bg-dark);
+  border: 1px solid #1a1a1a;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.nutrition-table thead tr {
+  background: linear-gradient(135deg, var(--primary) 0%, #b71c1c 100%);
+}
+
+.nutrition-table thead th {
+  padding: 16px 20px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nutrition-table thead th:first-child {
+  border-radius: 14px 0 0 0;
+}
+
+.nutrition-table thead th:last-child {
+  text-align: center;
+  width: 100px;
+  border-radius: 0 14px 0 0;
+}
+
+.nutrition-table tbody tr {
+  border-bottom: 1px solid #1a1a1a;
+  transition: background 0.2s ease;
+}
+
+.nutrition-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.nutrition-table tbody tr:not(.divider-row):not(.active-header):hover {
+  background: rgba(211, 47, 47, 0.04);
+}
+
+.nutrition-table tbody tr:nth-child(even):not(.divider-row):not(.active-header) {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.nutrition-table tbody tr:nth-child(even):not(.divider-row):not(.active-header):hover {
+  background: rgba(211, 47, 47, 0.06);
+}
+
+.nutrition-table tbody td {
+  padding: 14px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.nutrition-table tbody td:first-child {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.nutrition-table tbody td:nth-child(2) {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.nutrition-table tbody td:last-child {
+  text-align: center;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.nutrition-table .sub-row td {
+  padding-left: 36px;
+  font-size: 13px;
+  color: #888;
+}
+
+.nutrition-table .sub-row td:first-child {
+  font-weight: 400;
+  color: #888;
+}
+
+.nutrition-table .sub-row td:nth-child(2) {
+  font-weight: 500;
+  color: #999;
+}
+
+.nutrition-table .sub-row td:last-child {
+  color: #666;
+  font-weight: 500;
+}
+
+.nutrition-table .main-row td {
+  border-top: 1px solid #222;
+}
+
+.nutrition-table .divider-row td {
+  padding: 0;
+  height: 0;
+  position: relative;
+}
+
+.nutrition-table .divider-row td::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.5;
+}
+
+.nutrition-table .active-header td {
+  padding: 18px 20px 10px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.nutrition-table .active-header td::before {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.nutrition-table .active-row {
+  background: rgba(211, 47, 47, 0.04) !important;
+}
+
+.nutrition-table .active-row td {
+  color: var(--primary-hover);
+  font-weight: 700;
+  padding: 16px 20px;
+}
+
+.nutrition-table .active-row td:first-child {
+  color: var(--primary-hover);
+  font-size: 15px;
+}
+
+.nutrition-table .active-row td:nth-child(2) {
+  color: var(--primary-hover);
+  font-size: 16px;
+}
+
+.nutrition-table .active-row td:last-child {
+  color: var(--primary);
+  font-size: 16px;
+}
+
+.nutrition-footnote {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+  padding: 0 10px;
+}
+
+.nutrition-footnote .vd-marker {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.ingredients-list {
+  text-align: left;
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 24px auto 0;
+  line-height: 1.8;
+  padding: 18px 22px;
+  background: rgba(211, 47, 47, 0.02);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 10px 10px 0;
+  border-top: 1px solid #1a1a1a;
+  border-right: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.ingredients-list .ingredients-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+/* ===== END NUTRITION TABLE ===== */
 
 .usage-steps {
   display: grid;
@@ -584,7 +899,7 @@ header {
 }
 
 .faq {
-  background-color: var(--bg-card);
+  background-color: var(--bg-dark);
 }
 
 .faq-list {
@@ -651,6 +966,7 @@ header {
 
 .cta-section {
   background: linear-gradient(180deg, #0a0a0a 0%, #140505 100%);
+  border-top: 1px solid rgba(211, 47, 47, 0.06);
   text-align: center;
   padding: 120px 5%;
 }
@@ -925,6 +1241,39 @@ footer {
 
   .ingredients-grid {
     grid-template-columns: 1fr;
+  }
+
+  .nutrition-table-wrapper {
+    max-width: 100%;
+  }
+
+  .nutrition-table {
+    font-size: 13px;
+  }
+
+  .nutrition-table thead th {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+
+  .nutrition-table tbody td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .nutrition-table .sub-row td {
+    padding-left: 20px;
+    font-size: 12px;
+  }
+
+  .serving-info {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .nutrition-footnote {
+    font-size: 12px;
+    padding: 0 10px;
   }
 
   .usage-steps {
